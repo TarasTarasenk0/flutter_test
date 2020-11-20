@@ -13,22 +13,22 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   var _counter = 1;
   final _gradientMultiple = 5;
-  final _gradientsymetricMultiple = 2;
+  final _gradientSymmetricMultiple = 2;
+
+  Color _getRandomColor() {
+    final random = Random();
+    final randomRed = random.nextInt(255);
+    final randomGreen = random.nextInt(255);
+    final randomBlue = random.nextInt(255);
+    return Color.fromRGBO(randomRed, randomGreen, randomBlue, 1.0);
+  }
+
+  bool _multipleOf(int value) {
+    return (_counter % value == 0);
+  }
 
   @override
   Widget build(BuildContext context) {
-    Color _getRandomColor() {
-      final random = Random();
-      final randomRed = random.nextInt(255);
-      final randomGreen = random.nextInt(255);
-      final randomBlue = random.nextInt(255);
-      return Color.fromRGBO(randomRed, randomGreen, randomBlue, 1.0);
-    }
-
-    bool _multipleOf(int value) {
-      return (_counter % value == 0);
-    }
-
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
@@ -42,10 +42,10 @@ class _HomeScreenState extends State<HomeScreen> {
             decoration: _multipleOf(_gradientMultiple)
                 ? BoxDecoration(
                     gradient: LinearGradient(
-                        begin: _multipleOf(_gradientsymetricMultiple)
+                        begin: _multipleOf(_gradientSymmetricMultiple)
                             ? Alignment.centerLeft
                             : Alignment.topCenter,
-                        end: _multipleOf(_gradientsymetricMultiple)
+                        end: _multipleOf(_gradientSymmetricMultiple)
                             ? Alignment.centerRight
                             : Alignment.bottomCenter,
                         colors: [_getRandomColor(), _getRandomColor()]))

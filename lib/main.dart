@@ -33,39 +33,41 @@ class _HomeScreenState extends State<HomeScreen> {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             body: GestureDetector(
-              onTap: () {
-                setState(() {
-                  _counter++;
-                });
-              },
-              child: Container(
-                decoration: _multipleOf(_gradientMultiple)
-                    ?  BoxDecoration(
+          onTap: () {
+            setState(() {
+              _counter++;
+            });
+          },
+          child: Container(
+            decoration: _multipleOf(_gradientMultiple)
+                ? BoxDecoration(
                     gradient: LinearGradient(
-                        begin: _multipleOf(_gradientsymetricMultiple) ? Alignment.centerLeft : Alignment.topCenter,
-                        end: _multipleOf(_gradientsymetricMultiple) ? Alignment.centerRight : Alignment.bottomCenter,
-                        colors: [_getRandomColor(), _getRandomColor()])
-                )
-                    : null,
-                color: _multipleOf(_gradientMultiple) ? null : _getRandomColor(),
-                child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Hey there",
-                            style: TextStyle(
-                                fontStyle: FontStyle.italic,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 34)),
-                        Text("Count - $_counter",
-                            style: TextStyle(
-                                fontStyle: FontStyle.normal,
-                                fontWeight: FontWeight.normal,
-                                fontSize: 21))
-                      ],
-                    )
-                ),
-              ),
-            )));
+                        begin: _multipleOf(_gradientsymetricMultiple)
+                            ? Alignment.centerLeft
+                            : Alignment.topCenter,
+                        end: _multipleOf(_gradientsymetricMultiple)
+                            ? Alignment.centerRight
+                            : Alignment.bottomCenter,
+                        colors: [_getRandomColor(), _getRandomColor()]))
+                : null,
+            color: _multipleOf(_gradientMultiple) ? null : _getRandomColor(),
+            child: Center(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Hey there",
+                    style: TextStyle(
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 34)),
+                Text("Count - $_counter",
+                    style: TextStyle(
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 21))
+              ],
+            )),
+          ),
+        )));
   }
 }
